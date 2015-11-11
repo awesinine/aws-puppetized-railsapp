@@ -65,36 +65,26 @@ Make note of your public DNS
   * `tar -xzvf puppet-enterprise-2015.2.3-el-7-x86_64.tar.gz`
   * `cd puppet-enterprise-2015.2.3-el-7-x86_64`
 
-* run the puppet installer
-./puppet-enterprise-installer 
-Install puppet master?  Yes
+* run the puppet installer method 1 : installer
+  * `./puppet-enterprise-installer`
+  * go to the web console at https://name:3000
+  * configure via web gui
 
-go to the web console at https://name:3000
-configure via web gui
-
-Backup your answers file `cp /etc/puppetlabs/installer/answers.install /etc/puppetlabs/installer/answers.config`
-
-make some edits to the answer file: 
-* **replace** _hostnames_ which refer to the internal aws name with `curl http://169.254.169.254/latest/meta-data/public-hostname`
+* run the puppet installer method 2 : answers file
+  * make some edits to the answer file: 
+  * **replace** _hostnames_ which refer to the internal aws name with `curl http://169.254.169.254/latest/meta-data/public-hostname`
   * _this is an aws endpoint which will give you the hostname of the box_
-* **replace** _redacted_ with matching passwords
+  * **replace** _redacted_ with matching passwords
+  * `./puppet-enterprise-installer -a answer.file`
 
-backticks execute commands from the shell!  Replace master hostname certname with 
+_EITHER PATH_: Backup your answers file `cp /etc/puppetlabs/installer/answers.install /etc/puppetlabs/installer/answers.config`
 
-
-install
-./puppet-enterprise-installer -a master.answers
-
-setup firewall to let port 443 get and send traffic!
+[setup firewall](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/3/html/Security_Guide/s1-firewall-ipt-basic.html) to let port 443 get and send traffic!
 service iptables stop (temporary for testing, you'll want to go back and setup iptables correctly)
 
-check for nodes puppet agent -t
-setup path or alias for that command
-
-`/opt/puppetlabs/bin/puppet agent -t` (performs an agent checkin with the node, targets master!)
+check in master as a node
+`/opt/puppetlabs/bin/puppet agent -t`
 
 NEXT STEPS
-
-spin up node automagically
-
-phone home (contact master) <3
+* spin up node automagically
+* phone home (contact master) <3
