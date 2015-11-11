@@ -72,11 +72,14 @@ Install puppet master?  Yes
 go to the web console at https://name:3000
 configure via web gui
 
-Backup your answers file `cp /etc/puppetlabs/installer/answers.install /etc/puppetlabs/installer/answers.bak`
+Backup your answers file `cp /etc/puppetlabs/installer/answers.install /etc/puppetlabs/installer/answers.config`
 
-make some edits to the answer
+make some edits to the answer file: 
+* **replace** _hostnames_ which refer to the internal aws name with `curl http://169.254.169.254/latest/meta-data/public-hostname`
+  * _this is an aws endpoint which will give you the hostname of the box_
+* **replace** _redacted_ with matching passwords
 
-backticks execute commands from the shell!  Replace master hostname certname with `curl http://169.254.169.254/latest/meta-data/public-hostname`
+backticks execute commands from the shell!  Replace master hostname certname with 
 
 
 install
