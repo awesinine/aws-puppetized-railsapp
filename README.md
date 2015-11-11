@@ -91,7 +91,8 @@ service iptables stop (temporary for testing, you'll want to go back and setup i
 
 check for nodes puppet agent -t
 setup path or alias for that command
-/opt/puppet/bin/puppet agent -t (performs an agent checkin with the node, targets master!)
+
+`/opt/puppetlabs/bin/puppet agent -t` (performs an agent checkin with the node, targets master!)
 
 NEXT STEPS
 
