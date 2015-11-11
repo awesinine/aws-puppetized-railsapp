@@ -20,7 +20,7 @@ Interested in getting a small scale puppetized rails app with passenger setup wi
 * Ruby on Rails : hello world
 
 ###AWS account setup
-Sorry, you're on your own.  You'll need a credit card, an e-mail address and some ambition.
+Sorry, you're on your own.  You'll need a :credit_card:, an :e-mail: and some _ambition_.
 
 ###AWS Puppet Master Setup:
 * Select EC2
