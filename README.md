@@ -58,6 +58,10 @@ Make note of your public DNS
 **ssh in**
 `ssh -i example.pem root@publicDNS`
 
+**update / upgrade**
+`yum update -y`
+`yum upgrade -y`
+
 * untar that badboy
   * `tar -xzvf puppet-enterprise-2015.2.3-el-7-x86_64.tar.gz`
   * `cd puppet-enterprise-2015.2.3-el-7-x86_64`
