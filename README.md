@@ -1,6 +1,5 @@
 # aws-puppetized-railsapp
 Interested in getting a small scale puppetized rails app with passenger setup within AWS?  Here's a guide!
-_I'm editing this on the fly as I go with the aim to provide clear documentation._
 
 **There are some constraints for this project:**
  
@@ -38,12 +37,13 @@ Sorry, you're on your own.  You'll need a credit card, an e-mail address and som
     * **Traffic**   :  `80, 8080 : 0.0.0.0/0`
     * **Active MQ** :  `61613 : 0.0.0.0/0  `
     * **Puppet**    :  `8140: 0.0.0.0/0`
+    * **Pupper web**:  `3000: 0.0.0.0/0`  <--- you'll diable this later
 
-Create a key or use an existing.  Save that pem somewhere safe 
-launch
+Create a key or use an existing one if you have it.  Save that pem somewhere safe! 
 
-check permissions on your key
-chmod 0400
+launch your instance
+
+check permissions on your key: if not 0400, then change permissions: `chmod 0400`
 
 takes ~ 5 mins for everything to get launched and all that Jazz
 go download your [enterprise puppet master](https://puppetlabs.com/download-puppet-enterprise-welcome)
@@ -59,7 +59,6 @@ Make note of your public DNS
 `ssh -i example.pem root@publicDNS`
 
 **update / upgrade**
-`yum update -y`
 `yum upgrade -y`
 
 * untar that badboy
