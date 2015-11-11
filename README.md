@@ -66,22 +66,18 @@ Make note of your public DNS
   * `cd puppet-enterprise-2015.2.3-el-7-x86_64`
 
 * run the puppet installer
-./puppet-enterprise-installer -s master.answers (saves an answer file that will allow you to automate the installation later!)
+./puppet-enterprise-installer 
 Install puppet master?  Yes
-install puppetdb console to this node?  Yes
-puppet master cert dns : yes (but we change this later)
-dns alias: all the names by which this node can be known
-postgres? yes
-443
-admin login, password
-smtp host: not needed choose localhost
-vendor packages yes
-accept symbolic links yes
-Cloud provisioner? Yes
+
+go to the web console at https://name:3000
+configure via web gui
+
+Backup your answers file `cp /etc/puppetlabs/installer/answers.install /etc/puppetlabs/installer/answers.bak`
+
+make some edits to the answer
 
 backticks execute commands from the shell!  Replace master hostname certname with `curl http://169.254.169.254/latest/meta-data/public-hostname`
 
-add to dnshost name (don't replace)
 
 install
 ./puppet-enterprise-installer -a master.answers
