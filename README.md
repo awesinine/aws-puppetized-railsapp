@@ -80,13 +80,11 @@ Make note of your public DNS
 _EITHER PATH_: Backup your answers file `cp /etc/puppetlabs/installer/answers.install /etc/puppetlabs/installer/answers.config`
 
 [setup firewall](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/3/html/Security_Guide/s1-firewall-ipt-basic.html) to let port 443 get and send traffic!
-`service iptables stop`
 
-`iptables -A OUTPUT -p tcp -m tcp --dport 443 -j ACCEPT`
-
-`iptables -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT`
-
-`service iptables start`
+* `service iptables stop`
+* `iptables -A OUTPUT -p tcp -m tcp --dport 443 -j ACCEPT`
+* `iptables -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT`
+* `service iptables start`
 
 check in master as a node
 `/opt/puppetlabs/bin/puppet agent -t`
