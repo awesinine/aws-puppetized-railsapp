@@ -89,17 +89,23 @@ _EITHER PATH_: Backup your answers file `cp /etc/puppetlabs/installer/answers.in
 check in master as a node
 `/opt/puppetlabs/bin/puppet agent -t`
 
-NEXT STEPS
-puppet aws cloud provisioner
-puppet node install
+###AWS Puppet Node Setup:
+* Select EC2
+* Select a Region near you
+* Select Community AMI
+  * CentOS6.5
+  * _I Went with T1.Large for my puppet master_
+* Storage => 30 gigs `HEY: Note that the puppet tutorial says 100gigs`
+* Tagging => `server : webserver`
+* Security Group : `name-webserver`
+  * Ports:
+    * **SSH**       :  `22 : 0.0.0.0/0`
+    * **Traffic**   :  `80, 8080 : 0.0.0.0/0`
+    * **Active MQ** :  `61613 : 0.0.0.0/0  `
+    * **Puppet**    :  `8140: 0.0.0.0/0`
 
-`puppet node_aws create
---image ami
---keyname key.pem
---type m1.small
---group security-group`
+Create a key or use an existing one if you have it.  Save that pem somewhere safe! 
 
-* spin up node automagically
-* phone home (contact master) <3
+launch your instance
 
 /opt/puppetlabs/bin/puppet cert list
