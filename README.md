@@ -101,3 +101,5 @@ puppet node install
 
 * spin up node automagically
 * phone home (contact master) <3
+
+/opt/puppetlabs/bin/puppet cert list
