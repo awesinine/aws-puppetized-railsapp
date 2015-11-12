@@ -92,5 +92,12 @@ check in master as a node
 NEXT STEPS
 puppet aws cloud provisioner
 puppet node install
+
+`puppet node_aws create
+--image ami
+--keyname key.pem
+--type m1.small
+--group security-group`
+
 * spin up node automagically
 * phone home (contact master) <3
