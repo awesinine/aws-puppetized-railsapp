@@ -52,8 +52,8 @@ Make note of your public DNS
 [no public dns?](http://stackoverflow.com/questions/20941704/ec2-instance-has-no-public-dns)
 
 **secure copy the puppet enterprise over to aws:** `scp -i example.pem ./puppet-enterprise-2015.2.3-el-7-x86_64.tar.gz root@publicDNS:/home/root`
-
-...15 mins later...
+**secure copy your pem over to aws:**
+scp -i example.pem example.pem root@publicDNS:/home/`
 
 **ssh in**
 `ssh -i example.pem root@publicDNS`
@@ -90,5 +90,7 @@ check in master as a node
 `/opt/puppetlabs/bin/puppet agent -t`
 
 NEXT STEPS
+puppet aws cloud provisioner
+puppet node install
 * spin up node automagically
 * phone home (contact master) <3
