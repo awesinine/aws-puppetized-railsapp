@@ -79,6 +79,9 @@ scp -i example.pem example.pem root@publicDNS:/home/`
 
 _EITHER PATH_: Backup your answers file `cp /etc/puppetlabs/installer/answers.install /etc/puppetlabs/installer/answers.config`
 
+puppet resource group puppet ensure=present
+puppet resource user puppet ensure=present gid=puppet
+
 [setup firewall](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/3/html/Security_Guide/s1-firewall-ipt-basic.html) to let port 443 get and send traffic!
 
 * `service iptables stop`
@@ -109,3 +112,23 @@ Create a key or use an existing one if you have it.  Save that pem somewhere saf
 launch your instance
 
 /opt/puppetlabs/bin/puppet cert list
+yum install epel-release -y
+sudo yum install httpd httpd-devel mod_ssl ruby-devel rubygems gcc -y
+gem install rack passenger
+yum install gcc-c++
+yum install libcurl-devel
+passenger-install-apache2-module
+
+apache edit conf???
+LoadModule passenger_module /usr/lib/ruby/gems/1.8/gems/passenger-5.0.21/buildout/apache2/mod_passenger.so
+<IfModule mod_passenger.c>
+  PassengerRoot /usr/lib/ruby/gems/1.8/gems/passenger-5.0.21
+  PassengerDefaultRuby /usr/bin/ruby
+</IfModule>
+
+mkdir -p /usr/share/puppet/rack/puppetmasterd
+cd /usr/share/puppet/rack/
+wget "https://raw.githubusercontent.com/puppetlabs/puppet/stable/ext/rack/config.ru" config.ru
+mkdir /usr/share/puppet/rack/puppetmasterd/public /usr/share/puppet/rack/puppetmasterd/tmp
+cp /usr/share/puppet/rack/config.ru /usr/share/puppet/rack/puppetmasterd/
+chown puppet:puppet /usr/share/puppet/rack/puppetmasterd/config.ru
